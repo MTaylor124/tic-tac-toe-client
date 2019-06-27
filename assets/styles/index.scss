@@ -1,1 +1,28 @@
 @import '~bootstrap/scss/bootstrap';
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+.choicemark {
+  background: green;
+  height: 133px;
+  width: 133px;
+}
+
+.vertical {
+  background: red;
+  height: 157px;
+  width: 5px;
+}
+
+.horizontal {
+  background: red;
+  height: 5px;
+  width: 130px;
+}
+
+div {
+  margin: 5px
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>tictac</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -11,7 +11,78 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Browser Template</h1>
+    <body class="container-fluid">
+      <header>
+      <h1>lets get this bread</h1>
+
+          <div class="row">
+              <form id="sign-up">
+                <input type="email" name="credentials[email]" placeholder="email">
+                <input type="password" name="credentials[password]" placeholder="password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+                <button type="submit">Create Account</button>
+                <span id="check-sign-up"></span>
+              </form>
+              <form id="sign-in">
+              <h2> sign in</h2>
+              <input type="email" name="credentials[email]" placeholder="email">
+              <input type="password" name="credentials[password]" placeholder="password">
+              <button type="submit">sign in</button>
+              <span id="check-sign-in"></span>
+            </form>
+              <form id="change-password">
+                <h2>change password</h2>
+                <input type="password" name="passwords[old]" placeholder="old password">
+                <input type="password" name="passwords[new]" placeholder="new password">
+                <button type="submit">change password</button>
+                <span id="check-change-password"></span>
+              </form>
+              <form id="sign-out">
+                <button type="submit">sign out</button>
+                <span id="check-sign-out"></span>
+              </form>
+          </div>
+        </header>
+            <br>
+            <main class="d-flex flex-row">
+
+                <div class="row">
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+              </div>
+
+              <div class="row">
+                  <div class="horizontal"></div>
+                  <div class="horizontal"></div>
+                  <div class="horizontal"></div>
+              </div>
+
+              <div class="row">
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+              </div>
+
+              <div class="row">
+                  <div class="horizontal"></div>
+                  <div class="horizontal"></div>
+                  <div class="horizontal"></div>
+              </div>
+
+              <div class="row">
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+                  <div class="vertical"></div>
+                  <div class="choicemark"></div>
+              </div>
+
+              <br>
+            </main>
     </body>
 </html>
