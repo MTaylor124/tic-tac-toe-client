@@ -40,31 +40,20 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
-let whosMove = 0
-const movesLeft = []
+let whosMove = 1
 
 const sendSelection = event => {
-
-  if (whosMove === 0)
-
-  {
-    $(event.target).text('O')
-    $(event.target).css('font-size', '110px')
-    $(event.target).css('text-align', 'center')
-    const pick = []
-    pick.indexOf($(event.target))
-    movesLeft.push(pick)
-    console.log(movesLeft)
-    whosMove = whosMove + 1
-  } else {
+  const mytext = $(event.target).text()
+  if (whosMove === 1 && mytext !== 'O') {
     $(event.target).text('X')
     $(event.target).css('font-size', '110px')
     $(event.target).css('text-align', 'center')
     whosMove = whosMove - 1
-    const pick = []
-    pick.indexOf($(event.target))
-    movesLeft.push(pick)
-    console.log(movesLeft)
+  } else if (whosMove === 0 && mytext !== 'X') {
+    $(event.target).text('O')
+    $(event.target).css('font-size', '110px')
+    $(event.target).css('text-align', 'center')
+    whosMove = whosMove + 1
   }
 }
 
