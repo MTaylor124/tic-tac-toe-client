@@ -39,7 +39,14 @@ const onSignOut = event => {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+let numberOfPlays = 0
 
+const checkgame = () => {
+  if (numberOfPlays === 9) {
+    $('#checkforgame').text('game over')
+    $('#checkforgame').css('font-size', '50px')
+  }
+}
 let whosMove = 1
 
 const sendSelection = event => {
@@ -49,12 +56,19 @@ const sendSelection = event => {
     $(event.target).css('font-size', '110px')
     $(event.target).css('text-align', 'center')
     whosMove = whosMove - 1
+    numberOfPlays = numberOfPlays + 1
   } else if (whosMove === 0 && mytext !== 'X') {
     $(event.target).text('O')
     $(event.target).css('font-size', '110px')
     $(event.target).css('text-align', 'center')
     whosMove = whosMove + 1
+    numberOfPlays = numberOfPlays + 1
   }
+  checkgame()
+}
+
+const showdaboard = () => {
+  $('#hideme').show()
 }
 
 module.exports = {
@@ -62,5 +76,6 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  sendSelection
+  sendSelection,
+  showdaboard
 }

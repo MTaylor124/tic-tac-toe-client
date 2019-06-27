@@ -14,4 +14,6 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#create-board').on('click', authEvents.onCreateBoard)
   $('.clicker').on('click', authEvents.sendSelection)
+  $('#hideme').hide()
+  $('#makedaboard').on('click', authEvents.showdaboard)
 })
