@@ -40,9 +40,38 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
+let whosMove = 0
+const movesLeft = []
+
+const sendSelection = event => {
+
+  if (whosMove === 0)
+
+  {
+    $(event.target).text('O')
+    $(event.target).css('font-size', '110px')
+    $(event.target).css('text-align', 'center')
+    const pick = []
+    pick.indexOf($(event.target))
+    movesLeft.push(pick)
+    console.log(movesLeft)
+    whosMove = whosMove + 1
+  } else {
+    $(event.target).text('X')
+    $(event.target).css('font-size', '110px')
+    $(event.target).css('text-align', 'center')
+    whosMove = whosMove - 1
+    const pick = []
+    pick.indexOf($(event.target))
+    movesLeft.push(pick)
+    console.log(movesLeft)
+  }
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  sendSelection
 }

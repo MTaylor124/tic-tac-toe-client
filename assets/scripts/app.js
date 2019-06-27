@@ -13,4 +13,5 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#create-board').on('click', authEvents.onCreateBoard)
+  $('.clicker').on('click', authEvents.sendSelection)
 })
