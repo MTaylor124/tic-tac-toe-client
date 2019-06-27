@@ -1,28 +1,32 @@
 @import '~bootstrap/scss/bootstrap';
 
 .container-fluid {
-  display: flex;
-  justify-content: center;
 }
 
-.choicemark {
-  background: green;
-  height: 133px;
-  width: 133px;
-}
-
-.vertical {
-  background: red;
-  height: 157px;
-  width: 5px;
-}
-
-.horizontal {
-  background: red;
-  height: 5px;
-  width: 130px;
+.flex-row {
+  justify-content: space-around;
 }
 
 div {
-  margin: 5px
+  border: 15px;
+}
+
+.checkmark {
+  height: 130px;
+  width: 500px;
+  border: 3px solid black;
+}
+
+.vertical {
+  border-radius: 50%;
+  height: 130px;
+  width: 5px;
+  background: black;
+}
+
+.horizontal {
+  border-radius: 50%;
+  height: 5px;
+  width: 500px;
+  background: black;
 }
