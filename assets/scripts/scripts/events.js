@@ -39,7 +39,6 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
-
 let numberOfPlays = 0
 const checkgame = () => {
   if (numberOfPlays === 9) {
@@ -47,6 +46,12 @@ const checkgame = () => {
     $('#checkforgame').css('font-size', '50px')
   }
 }
+let xScore = 0
+let oScore = 0
+let overallscore = xScore + oScore
+let totalxmoves = 0
+let totalomoves = 0
+
 let whosMove = 1
 let playsMade = 0
 const sendSelection = event => {
@@ -58,6 +63,7 @@ const sendSelection = event => {
     playsMade = playsMade + 1
     whosMove = whosMove - 1
     numberOfPlays = numberOfPlays + 1
+    totalxmoves = totalxmoves + 1
   } else if (whosMove === 0 && mytext !== 'x') {
     $(event.target).text('o')
     $(event.target).css('font-size', '80px')
@@ -65,10 +71,17 @@ const sendSelection = event => {
     whosMove = whosMove + 1
     numberOfPlays = numberOfPlays + 1
     playsMade = playsMade + 1
+    totalomoves = totalomoves + 1
   }
   checkgame()
 }
 
+const onShowStats = () => {
+  $('#gamestatsx').text(`player x total moves: ${totalxmoves}`)
+  $('#gamestatso').text(`player o total moves: ${totalomoves}`)
+  $('#gamestatsx1').text(`player x winning percentage: ${xScore / overallscore}`)
+  $('#gamestatso2').text(`player o winning percentage: ${oScore / overallscore}`)
+}
 let gbstatus = ['', '', '', '', '', '', '', '', '']
 
 const cleargameboard = () => {
@@ -76,9 +89,6 @@ const cleargameboard = () => {
   gbstatus = ['', '', '', '', '', '', '', '', '']
   playsMade = 0
 }
-
-let xScore = 0
-let oScore = 0
 
 const addScore = () => {
   if ($(event.target).text() === 'x') {
@@ -197,5 +207,6 @@ module.exports = {
   onCreateBoard,
   sillySystem,
   onShowGameBoard,
-  onUpdateBoard
+  onUpdateBoard,
+  onShowStats
 }

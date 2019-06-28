@@ -1,17 +1,6 @@
 'use strict'
 const store = require('./../store')
 
-// const disappear = (thing) => {
-//   setTimeout(function () {
-//     (thing).txt('this is a test')
-//   }, 5000)
-// }
-
-// setTimeout(function () {
-//   $('check-status').text('this is a test')
-// }, 5000)
-
-
 const signUpSuccess = () => {
   $('form').trigger('reset')
   $('#check-sign-up').text('successfully signed up')
