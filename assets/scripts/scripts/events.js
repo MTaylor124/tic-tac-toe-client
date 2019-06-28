@@ -13,7 +13,6 @@ const onSignUp = event => {
     .catch(ui.signUpFailure)
 }
 
-
 const onSignIn = event => {
   event.preventDefault()
   const form = event.target
@@ -39,8 +38,9 @@ const onSignOut = event => {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-let numberOfPlays = 0
 
+
+let numberOfPlays = 0
 const checkgame = () => {
   if (numberOfPlays === 9) {
     $('#checkforgame').text('game over')
@@ -69,10 +69,6 @@ const sendSelection = event => {
   checkgame()
 }
 
-const showdaboard = () => {
-  $('#hideme').show()
-}
-
 let gbstatus = ['', '', '', '', '', '', '', '', '']
 
 const cleargameboard = () => {
@@ -92,6 +88,18 @@ const addScore = () => {
     oScore = oScore + 1
     $('#scoreofO').text(oScore)
   } whosMove = 1
+  if (oScore < xScore) {
+    $('.xside').css('background', 'yellow')
+    $('.xside').css('padding', '14px')
+    $('.xside').css('border-radius', '50%')
+  } else if (oScore > xScore) {
+    $('.oside').css('background', 'yellow')
+    $('.oside').css('padding', '14px')
+    $('.oside').css('border-radius', '50%')
+  } else {
+    $('.oside').css('background', 'white')
+    $('.xside').css('background', 'white')
+  }
 }
 const checkForWin = () => {
   if (playsMade > 4) {
@@ -156,12 +164,38 @@ const sillySystem = event => {
   checkForWin()
 }
 
+const onCreateBoard = event => {
+  event.preventDefault()
+  api.createBoard()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+  cleargameboard()
+  whosMove = 1
+}
+
+const onUpdateBoard = event => {
+  event.preventDefault()
+  const boardnow = gbstatus
+  api.updateBoard(boardnow)
+    .then(console.log)
+    .catch(console.log)
+}
+
+const onShowGameBoard = event => {
+  event.preventDefault()
+  api.showGameBoard()
+    .then(console.log)
+    .catch(console.log)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
   sendSelection,
-  showdaboard,
-  sillySystem
+  onCreateBoard,
+  sillySystem,
+  onShowGameBoard,
+  onUpdateBoard
 }

@@ -40,9 +40,43 @@ const signOut = () => {
   })
 }
 
+const createBoard = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateBoard = currentboard => {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.user.id,
+    method: 'PATCH',
+    data: currentboard,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showGameBoard = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createBoard,
+  updateBoard,
+  showGameBoard
 }

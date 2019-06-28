@@ -45,7 +45,7 @@ const signInFailure = () => {
 
 const changePasswordSuccess = () => {
   $('form').trigger('reset')
-  $('#check-change-password').text('password successfully changed')
+  $('#check-change-password').text('password changed')
   setTimeout(function () {
     $('#check-change-password').hide()
   }, 2000)
@@ -60,14 +60,33 @@ const changePasswordFailure = () => {
 
 const signOutSuccess = () => {
   $('form').trigger('reset')
-  $('#check-sign-out').text('successfully signed out')
+  $('#check-sign-out').text('signed out')
   setTimeout(function () {
     $('#check-sign-out').hide()
   }, 2000)
 }
 const signOutFailure = () => {
-
+  $('form').trigger('reset')
+  $('#check-sign-out').text('failed to sign out')
+  setTimeout(function () {
+    $('#check-sign-out').hide()
+  }, 2000)
 }
+
+const newGameSuccess = () => {
+  $('#made-game').text('new game made')
+  setTimeout(function () {
+    $('#made-game').hide()
+  }, 3000)
+  $('#hideme').show()
+}
+const newGameFailure = () => {
+  $('#made-game').text('sign in first')
+  setTimeout(function () {
+    $('#made-game').hide()
+  }, 5000)
+}
+
 module.exports = {
   signInSuccess,
   signInFailure,
@@ -76,5 +95,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  newGameSuccess,
+  newGameFailure
 }
