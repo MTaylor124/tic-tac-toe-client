@@ -6,18 +6,50 @@
 .flex-row {
   justify-content: space-around;
 }
-
+input {
+  display: block;
+}
 div {
   border: 15px;
 }
-
 .checkmark {
   height: 130px;
   width: 500px;
-
 }
 
+#setmax {
+  max-width: 600px;
+  margin: auto;
+}
+
+h4 {
+  display: inline;
+}
+
+#initiategame {
+  margin-left: 50%;
+}
+.xside {
+  display: inline;
+  margin-left: 30%;
+}
+.oside {
+  display: inline;
+  margin-left: 20%;
+}
 .vertical {
+  border-radius: 50%;
+  height: 130px;
+  width: 5px;
+  background: black;
+}
+
+#updates {
+  margin-left: 47%;
+  font-size: 40px;
+}
+
+.newfix {
   border-radius: 50%;
   height: 130px;
   width: 5px;

@@ -17,6 +17,7 @@
 
           <div class="row">
               <form id="sign-up">
+                <h2>sign-up</h2>
                 <input type="email" name="credentials[email]" placeholder="email">
                 <input type="password" name="credentials[password]" placeholder="password">
                 <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
@@ -31,53 +32,68 @@
               <span id="check-sign-in"></span>
             </form>
               <form id="change-password">
-                <h2>change password</h2>
+                <h2>change pw</h2>
                 <input type="password" name="passwords[old]" placeholder="old password">
                 <input type="password" name="passwords[new]" placeholder="new password">
                 <button type="submit">change password</button>
                 <span id="check-change-password"></span>
               </form>
               <form id="sign-out">
+                <h2>log out</h2>
                 <button type="submit">sign out</button>
                 <span id="check-sign-out"></span>
               </form>
           </div>
         </header>
             <br>
-            <button id="makedaboard" type="submit">make board</button>
+            <button id="initiategame" type="submit">start games</button>
             <main id="hideme">
-              <h4 id="checkforgame">new try</h4>
-                <div class="d-flex flex-row my-flex-container">
-                  <div data-cell-index='0' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='1' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='2' class="checkmark clicker"> </div>
-                </div>
-                <div class="d-flex flex-row my-flex-container">
-                  <div class="horizontal"></div>
-                  <div class="horizontal"></div>
-                  <div class="horizontal"></div>
-                </div>
-                <div class="d-flex flex-row my-flex-container">
-                  <div data-cell-index='3' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='4' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='5' class="checkmark clicker"> </div>
-                </div>
-                <div class="d-flex flex-row my-flex-container">
-                  <div class="horizontal"></div>
-                  <div class="horizontal"></div>
-                  <div class="horizontal"></div>
-                </div>
-                <div class="d-flex flex-row my-flex-container">
-                  <div data-cell-index='6' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='7' class="checkmark clicker"> </div>
-                  <div class="vertical"></div>
-                  <div data-cell-index='8' class="checkmark clicker"> </div>
-                </div>
+              <div class="xside">
+              <h4 class="scoreboard">x score:</h4>
+                <h4 id="scoreofX"> 0</h4>
+              </div>
+              <div class="oside">
+              <h4 class="scoreboard">o score:</h4>
+                <h4 id="scoreofO"> 0</h4>
+              </div>
+              <br>
+                <h5 id="updates"></h5>
+                  <table id="setmax">
+                    <tr>
+                      <td id="silly0" data-cell-index='0' class="checkmark clicker choice"> </td>
+                      <td class="vertical"> </td>
+                      <td id="silly1" data-cell-index='1' class="checkmark clicker choice"> </td>
+                      <td class="vertical"></td>
+                      <td id="silly2" data-cell-index='2' class="checkmark clicker choice"> </td>
+                    </tr>
+                    <tr>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                    </tr>
+                    <tr>
+                        <td id="silly3" data-cell-index='3' class="checkmark clicker choice"> </td>
+                        <td class="vertical"> </td>
+                        <td id="silly4" data-cell-index='4' class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="silly5" data-cell-index='5' class="checkmark clicker choice"> </td>
+                    </tr>
+                    <tr>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                    </tr>
+                    <tr>
+                        <td id="silly6" data-cell-index='6' class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="silly7" data-cell-index='7' class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="silly8" data-cell-index='8' class="checkmark clicker choice"> </td>
+                </table>
             </main>
 
 

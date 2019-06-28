@@ -48,21 +48,23 @@ const checkgame = () => {
   }
 }
 let whosMove = 1
-
+let playsMade = 0
 const sendSelection = event => {
   const mytext = $(event.target).text()
-  if (whosMove === 1 && mytext !== 'O') {
-    $(event.target).text('X')
-    $(event.target).css('font-size', '110px')
+  if (whosMove === 1 && mytext !== 'o') {
+    $(event.target).text('x')
+    $(event.target).css('font-size', '80px')
     $(event.target).css('text-align', 'center')
+    playsMade = playsMade + 1
     whosMove = whosMove - 1
     numberOfPlays = numberOfPlays + 1
-  } else if (whosMove === 0 && mytext !== 'X') {
-    $(event.target).text('O')
-    $(event.target).css('font-size', '110px')
+  } else if (whosMove === 0 && mytext !== 'x') {
+    $(event.target).text('o')
+    $(event.target).css('font-size', '80px')
     $(event.target).css('text-align', 'center')
     whosMove = whosMove + 1
     numberOfPlays = numberOfPlays + 1
+    playsMade = playsMade + 1
   }
   checkgame()
 }
@@ -71,11 +73,95 @@ const showdaboard = () => {
   $('#hideme').show()
 }
 
+let gbstatus = ['', '', '', '', '', '', '', '', '']
+
+const cleargameboard = () => {
+  $('.clicker').text('')
+  gbstatus = ['', '', '', '', '', '', '', '', '']
+  playsMade = 0
+}
+
+let xScore = 0
+let oScore = 0
+
+const addScore = () => {
+  if ($(event.target).text() === 'x') {
+    xScore = xScore + 1
+    $('#scoreofX').text(xScore)
+  } else if ($(event.target).text() === 'o') {
+    oScore = oScore + 1
+    $('#scoreofO').text(oScore)
+  } whosMove = 1
+}
+const checkForWin = () => {
+  if (playsMade > 4) {
+    if (gbstatus[0] !== '' && gbstatus[1] !== '' && gbstatus[2] !== '' && gbstatus[0] === gbstatus[1] && gbstatus[1] === gbstatus[2]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[2] !== '' && gbstatus[4] !== '' && gbstatus[6] !== '' && gbstatus[2] === gbstatus[4] && gbstatus[4] === gbstatus[6]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[3] !== '' && gbstatus[4] !== '' && gbstatus[5] !== '' && gbstatus[3] === gbstatus[4] && gbstatus[4] === gbstatus[5]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[6] !== '' && gbstatus[7] !== '' && gbstatus[8] !== '' && gbstatus[6] === gbstatus[7] && gbstatus[7] === gbstatus[8]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[0] !== '' && gbstatus[3] !== '' && gbstatus[6] !== '' && gbstatus[0] === gbstatus[3] && gbstatus[3] === gbstatus[6]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[1] !== '' && gbstatus[4] !== '' && gbstatus[7] !== '' && gbstatus[1] === gbstatus[4] && gbstatus[4] === gbstatus[7]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[2] !== '' && gbstatus[5] !== '' && gbstatus[8] !== '' && gbstatus[2] === gbstatus[5] && gbstatus[5] === gbstatus[8]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    } else if (gbstatus[0] !== '' && gbstatus[4] !== '' && gbstatus[8] !== '' && gbstatus[0] === gbstatus[4] && gbstatus[4] === gbstatus[8]) {
+      $('#updates').text(($(event.target).text() + ' wins'))
+      addScore()
+      cleargameboard()
+    }
+  }
+}
+
+const sillySystem = event => {
+  const testid = event.target.id
+  if (testid === 'silly0') {
+    gbstatus[0] = $(event.target).text()
+  } else if (testid === 'silly1') {
+    gbstatus[1] = $(event.target).text()
+  } else if (testid === 'silly2') {
+    gbstatus[2] = $(event.target).text()
+  } else if (testid === 'silly3') {
+    gbstatus[3] = $(event.target).text()
+  } else if (testid === 'silly4') {
+    gbstatus[4] = $(event.target).text()
+  } else if (testid === 'silly5') {
+    gbstatus[5] = $(event.target).text()
+  } else if (testid === 'silly6') {
+    gbstatus[6] = $(event.target).text()
+  } else if (testid === 'silly7') {
+    gbstatus[7] = $(event.target).text()
+  } else if (testid === 'silly8') {
+    gbstatus[8] = $(event.target).text()
+  }
+  console.log(gbstatus)
+  checkForWin()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
   sendSelection,
-  showdaboard
+  showdaboard,
+  sillySystem
 }
