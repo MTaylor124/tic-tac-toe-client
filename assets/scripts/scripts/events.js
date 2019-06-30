@@ -48,7 +48,7 @@ const checkgame = () => {
 }
 let xScore = 0
 let oScore = 0
-let overallscore = xScore + oScore
+// let overallscore = xScore + oScore
 let totalxmoves = 0
 let totalomoves = 0
 
@@ -79,8 +79,8 @@ const sendSelection = event => {
 const onShowStats = () => {
   $('#gamestatsx').text(`player x total moves: ${totalxmoves}`)
   $('#gamestatso').text(`player o total moves: ${totalomoves}`)
-  $('#gamestatsx1').text(`player x winning percentage: ${xScore / overallscore}`)
-  $('#gamestatso2').text(`player o winning percentage: ${oScore / overallscore}`)
+  // $('#gamestatsx1').text(`player x winning percentage: ${xScore / overallscore}`)
+  // $('#gamestatso2').text(`player o winning percentage: ${oScore / overallscore}`)
 }
 let gbstatus = ['', '', '', '', '', '', '', '', '']
 

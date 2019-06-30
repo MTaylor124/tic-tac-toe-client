@@ -54,9 +54,17 @@ const updateBoard = currentboard => {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.user.id,
     method: 'PATCH',
-    data: currentboard,
     headers: {
       Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': 0,
+          'value': 'x'
+        },
+        'over': false
+      }
     }
   })
 }
