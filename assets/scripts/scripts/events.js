@@ -87,8 +87,6 @@ const onSignOut = event => {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess,
-      $('.hidesignout').hide(),
-      $('.hidesignin').show(),
       xScore = 0,
       oScore = 0
     )
