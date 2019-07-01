@@ -158,10 +158,13 @@ const checkForWin = () => {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       cleargameboard()
+    } else if (playsMade > 8) {
+      $('#updates').text('game is a tie')
+      cleargameboard()
+      whosMove = 1
     }
   }
 }
-
 const sillySystem = event => {
   const testid = event.target.id
   if (testid === 'silly0') {
