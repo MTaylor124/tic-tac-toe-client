@@ -32,12 +32,6 @@ const onChangePassword = event => {
     .catch(ui.changePasswordFailure)
 }
 
-const onSignOut = event => {
-  event.preventDefault()
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
-}
 
 let numberOfPlays = 0
 const checkgame = () => {
@@ -88,6 +82,19 @@ const cleargameboard = () => {
   $('.clicker').text('')
   gbstatus = ['', '', '', '', '', '', '', '', '']
   playsMade = 0
+}
+
+const onSignOut = event => {
+  event.preventDefault()
+  api.signOut()
+  cleargameboard()
+  $('#hideme').hide()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+  xScore = xScore * 0
+  oScore = oScore * 0
+  $('.oside').css('background', 'white')
+  $('.xside').css('background', 'white')
 }
 
 const addScore = () => {
@@ -170,7 +177,7 @@ const sillySystem = event => {
   } else if (testid === 'silly8') {
     gbstatus[8] = $(event.target).text()
   }
-  console.log(gbstatus)
+  // console.log(gbstatus)
   checkForWin()
 }
 
@@ -194,8 +201,8 @@ const onUpdateBoard = event => {
 const onShowGameBoard = event => {
   event.preventDefault()
   api.showGameBoard()
-    .then(console.log)
-    .catch(console.log)
+    .then()
+    .catch()
 }
 
 module.exports = {
