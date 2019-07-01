@@ -89,10 +89,13 @@ const cleargameboard = () => {
 
 const onSignOut = event => {
   event.preventDefault()
+  $('#updates').text('')
+  $('#scoreofO').text('')
+  $('#scoreofX').text('')
+  xScore = 0
+  oScore = 0
   api.signOut()
-    .then(ui.signOutSuccess,
-      xScore = 0,
-      oScore = 0
+    .then(ui.signOutSuccess
     )
     .catch(ui.signOutFailure)
   cleargameboard()
