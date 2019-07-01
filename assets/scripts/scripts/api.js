@@ -69,19 +69,6 @@ const updateBoard = (index, value) => {
   })
 }
 
-const gameIsOver = () => {
-  store.game.over = true
-}
-// const showGameBoard = () => {
-//   return $.ajax({
-//     url: config.apiUrl + '/games/' + store.user.id,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
-
 module.exports = {
   signUp,
   signIn,

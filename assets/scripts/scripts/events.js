@@ -44,9 +44,9 @@ const checkgame = () => {
     $('#checkforgame').css('font-size', '50px')
   }
 }
+
 let xScore = 0
 let oScore = 0
-// let overallscore = xScore + oScore
 let totalxmoves = 0
 let totalomoves = 0
 let gameOver = true
@@ -90,8 +90,8 @@ const cleargameboard = () => {
 const onSignOut = event => {
   event.preventDefault()
   $('#updates').text('')
-  $('#scoreofO').text('')
-  $('#scoreofX').text('')
+  $('#scoreofO').text('0')
+  $('#scoreofX').text('0')
   xScore = 0
   oScore = 0
   api.signOut()
@@ -209,6 +209,7 @@ const onCreateBoard = event => {
   cleargameboard()
   whosMove = 1
   gameOver = false
+  $('#updates').text('')
 }
 
 const onUpdateBoard = event => {
