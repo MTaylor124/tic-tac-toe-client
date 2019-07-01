@@ -20,7 +20,8 @@ const onSignIn = event => {
   api.signIn(formData)
     .then(ui.signInSuccess,
       $('.hidesignout').show(),
-      $('.hidesignin').hide()
+      $('.hidesignin').hide(),
+      $('#check-sign-in').text('signed in')
     )
     .catch(ui.signInFailure)
 }

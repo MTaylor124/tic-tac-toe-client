@@ -18,7 +18,7 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   $('form').trigger('reset')
-  $('#check-sign-in').text('signed in')
+  // $('#check-sign-in').text('signed in')
   setTimeout(function () {
     $('#check-sign-in').hide()
   }, 2000)
