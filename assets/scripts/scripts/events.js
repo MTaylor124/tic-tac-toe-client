@@ -21,6 +21,7 @@ const onSignIn = event => {
     .then(ui.signInSuccess,
       $('.hidesignout').show(),
       $('.hidesignin').hide(),
+      $('#check-sign-in').show(),
       $('#check-sign-in').text('signed in')
     )
     .catch(ui.signInFailure)
