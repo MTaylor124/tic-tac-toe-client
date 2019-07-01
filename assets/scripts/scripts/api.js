@@ -41,6 +41,7 @@ const signOut = () => {
 }
 
 const createBoard = () => {
+  $('#updates').text('')
   return $.ajax({
     url: config.apiUrl + '/games/',
     method: 'POST',
