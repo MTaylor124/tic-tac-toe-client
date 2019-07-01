@@ -18,10 +18,12 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   $('form').trigger('reset')
-  // $('#check-sign-in').text('signed in')
+  $('#check-sign-in').text('signed in')
   setTimeout(function () {
-    $('#check-sign-in').hide()
+    $('#check-sign-in').text('')
   }, 2000)
+  $('.hidesignout').show()
+  $('.hidesignin').hide()
   store.user = data.user
 }
 const signInFailure = () => {

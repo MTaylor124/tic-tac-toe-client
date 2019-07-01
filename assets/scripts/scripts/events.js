@@ -18,12 +18,7 @@ const onSignIn = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.signIn(formData)
-    .then(ui.signInSuccess,
-      $('.hidesignout').show(),
-      $('.hidesignin').hide(),
-      $('#check-sign-in').show(),
-      $('#check-sign-in').text('signed in')
-    )
+    .then(ui.signInSuccess)
     .catch(ui.signInFailure)
 }
 
@@ -36,7 +31,6 @@ const onChangePassword = event => {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
-
 
 let numberOfPlays = 0
 const checkgame = () => {
