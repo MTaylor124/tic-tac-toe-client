@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>tictac</title>
+      <title>TicTacToe by Matt T</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -13,10 +13,10 @@
     </head>
     <body class="container-fluid">
       <header>
-      <h1>lets get this bread</h1>
+      <h1>Tic-Tac-Toe</h1>
 
           <div class="row">
-              <form id="sign-up">
+              <form class="hidesignin" id="sign-up">
                 <h2>sign-up</h2>
                 <input type="email" name="credentials[email]" placeholder="email">
                 <input type="password" name="credentials[password]" placeholder="password">
@@ -24,21 +24,21 @@
                 <button type="submit">Create Account</button>
                 <div id="check-sign-up"></div>
               </form>
-              <form id="sign-in">
+              <form class="hidesignin" id="sign-in">
               <h2> sign in</h2>
               <input type="email" name="credentials[email]" placeholder="email">
               <input type="password" name="credentials[password]" placeholder="password">
               <button type="submit">sign in</button>
               <div id="check-sign-in"></div>
             </form>
-              <form id="change-password">
+              <form class="hidesignout" id="change-password">
                 <h2>change pw</h2>
                 <input type="password" name="passwords[old]" placeholder="old password">
                 <input type="password" name="passwords[new]" placeholder="new password">
                 <button type="submit">change password</button>
                 <div id="check-change-password"></div>
               </form>
-              <form id="sign-out">
+              <form class="hidesignout" id="sign-out">
                 <h2>log out</h2>
                 <button type="submit">sign out</button>
                 <div id="check-sign-out"></div>
@@ -53,6 +53,8 @@
             <div id="gamestatsx1"></div>
             <div id="gamestatso1"></div>
             <div id="made-game"></div>
+            <div id="player-turn">now choosing</div>
+            <div id="player-turn"></div>
             <main id="hideme">
               <div class="xside">
               <h4 class="scoreboard">x score:</h4>

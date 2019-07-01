@@ -18,7 +18,10 @@ const onSignIn = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.signIn(formData)
-    .then(ui.signInSuccess)
+    .then(ui.signInSuccess,
+      $('.hidesignout').show(),
+      $('.hidesignin').hide()
+    )
     .catch(ui.signInFailure)
 }
 
@@ -87,10 +90,13 @@ const cleargameboard = () => {
 const onSignOut = event => {
   event.preventDefault()
   api.signOut()
+    .then(ui.signOutSuccess,
+      $('.hidesignout').hide(),
+      $('.hidesignin').show()
+    )
+    .catch(ui.signOutFailure)
   cleargameboard()
   $('#hideme').hide()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
   xScore = xScore * 0
   oScore = oScore * 0
   $('.oside').css('background', 'white')
@@ -177,7 +183,6 @@ const sillySystem = event => {
   } else if (testid === 'silly8') {
     gbstatus[8] = $(event.target).text()
   }
-  // console.log(gbstatus)
   checkForWin()
 }
 
@@ -194,8 +199,8 @@ const onUpdateBoard = event => {
   event.preventDefault()
   const boardnow = gbstatus
   api.updateBoard(boardnow)
-    .then(console.log)
-    .catch(console.log)
+    .then()
+    .catch()
 }
 
 const onShowGameBoard = event => {
