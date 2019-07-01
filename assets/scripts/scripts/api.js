@@ -69,6 +69,9 @@ const updateBoard = (index, value) => {
   })
 }
 
+const gameIsOver = () => {
+  store.game.over = true
+}
 // const showGameBoard = () => {
 //   return $.ajax({
 //     url: config.apiUrl + '/games/' + store.user.id,
@@ -86,5 +89,4 @@ module.exports = {
   signOut,
   createBoard,
   updateBoard
-  //showGameBoard
 }

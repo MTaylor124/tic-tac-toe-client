@@ -81,7 +81,6 @@ const newGameFailure = () => {
     $('#made-game').text('')
   }, 5000)
 }
-
 module.exports = {
   signInSuccess,
   signInFailure,

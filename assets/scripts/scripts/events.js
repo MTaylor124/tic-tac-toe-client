@@ -3,6 +3,11 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./../store')
+
+const gameIsOver = () => {
+  store.game.over = true
+}
 
 const onSignUp = event => {
   event.preventDefault()
@@ -125,37 +130,46 @@ const checkForWin = () => {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[2] !== '' && gbstatus[4] !== '' && gbstatus[6] !== '' && gbstatus[2] === gbstatus[4] && gbstatus[4] === gbstatus[6]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[3] !== '' && gbstatus[4] !== '' && gbstatus[5] !== '' && gbstatus[3] === gbstatus[4] && gbstatus[4] === gbstatus[5]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[6] !== '' && gbstatus[7] !== '' && gbstatus[8] !== '' && gbstatus[6] === gbstatus[7] && gbstatus[7] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[0] !== '' && gbstatus[3] !== '' && gbstatus[6] !== '' && gbstatus[0] === gbstatus[3] && gbstatus[3] === gbstatus[6]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[1] !== '' && gbstatus[4] !== '' && gbstatus[7] !== '' && gbstatus[1] === gbstatus[4] && gbstatus[4] === gbstatus[7]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[2] !== '' && gbstatus[5] !== '' && gbstatus[8] !== '' && gbstatus[2] === gbstatus[5] && gbstatus[5] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (gbstatus[0] !== '' && gbstatus[4] !== '' && gbstatus[8] !== '' && gbstatus[0] === gbstatus[4] && gbstatus[4] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
       gameOver = true
+      gameIsOver()
     } else if (playsMade > 8) {
       $('#updates').text('game is a tie')
       gameOver = true
+      gameIsOver()
       whosMove = 1
     }
   }
