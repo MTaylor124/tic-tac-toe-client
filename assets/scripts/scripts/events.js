@@ -171,10 +171,13 @@ const checkForWin = () => {
       gameIsOver()
     } else if (playsMade > 8) {
       $('#updates').text('game is a tie')
-      gameOver = true
-      gameIsOver()
-      whosMove = 1
+      setTimeout(function () {
+        $('#updates').text('')
+      }, 3000)
     }
+    gameOver = true
+    gameIsOver()
+    whosMove = 1
   }
 }
 const sillySystem = event => {
@@ -209,7 +212,6 @@ const onCreateBoard = event => {
   cleargameboard()
   whosMove = 1
   gameOver = false
-  $('#updates').text('')
 }
 
 const onUpdateBoard = event => {
