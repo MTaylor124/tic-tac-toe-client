@@ -66,7 +66,9 @@ const signOutFailure = () => {
   }, 2000)
 }
 
-const newGameSuccess = () => {
+const newGameSuccess = (response) => {
+  store.game = response.game
+  console.log(store.game)
   $('#made-game').text('new game made')
   setTimeout(function () {
     $('#made-game').text('')

@@ -18,7 +18,7 @@ $(() => {
   $('.clicker').on('click', authEvents.sillySystem)
   $('#initiate-game').on('click', authEvents.onCreateBoard)
   $('#hideme').hide()
-  $('.clicker').on('click', authEvents.onShowGameBoard)
+  // $('.clicker').on('click', authEvents.onShowGameBoard)
   $('.clicker').on('click', authEvents.onUpdateBoard)
   $('#game-stats').on('click', authEvents.onShowStats)
 })

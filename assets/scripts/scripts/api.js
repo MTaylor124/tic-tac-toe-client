@@ -50,9 +50,9 @@ const createBoard = () => {
   })
 }
 
-const updateBoard = currentboard => {
+const updateBoard = (index, value) => {
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.user.id,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -60,24 +60,24 @@ const updateBoard = currentboard => {
     data: {
       'game': {
         'cell': {
-          'index': 0,
-          'value': 'x'
+          'index': index,
+          'value': value
         },
-        'over': false
+        'over': store.game.over
       }
     }
   })
 }
 
-const showGameBoard = () => {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + store.user.id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const showGameBoard = () => {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.user.id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 module.exports = {
   signUp,
@@ -85,6 +85,6 @@ module.exports = {
   changePassword,
   signOut,
   createBoard,
-  updateBoard,
-  showGameBoard
+  updateBoard
+  //showGameBoard
 }
