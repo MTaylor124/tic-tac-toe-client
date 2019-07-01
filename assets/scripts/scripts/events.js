@@ -128,7 +128,7 @@ const addScore = () => {
 }
 
 const checkForWin = () => {
-  if (playsMade > 4 && gameOver === false) {
+  if (gameOver === false) {
     if (gbstatus[0] !== '' && gbstatus[1] !== '' && gbstatus[2] !== '' && gbstatus[0] === gbstatus[1] && gbstatus[1] === gbstatus[2]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       addScore()
