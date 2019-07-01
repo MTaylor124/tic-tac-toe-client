@@ -92,7 +92,9 @@ const onSignOut = event => {
   api.signOut()
     .then(ui.signOutSuccess,
       $('.hidesignout').hide(),
-      $('.hidesignin').show()
+      $('.hidesignin').show(),
+      xScore = 0,
+      oScore = 0
     )
     .catch(ui.signOutFailure)
   cleargameboard()
