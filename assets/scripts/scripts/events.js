@@ -174,10 +174,10 @@ const checkForWin = () => {
       setTimeout(function () {
         $('#updates').text('')
       }, 3000)
+      gameOver = true
+      gameIsOver()
+      whosMove = 1
     }
-    gameOver = true
-    gameIsOver()
-    whosMove = 1
   }
 }
 const sillySystem = event => {
