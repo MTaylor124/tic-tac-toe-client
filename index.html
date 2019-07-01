@@ -14,6 +14,10 @@
     <body class="container-fluid">
       <header>
       <h1>Tic-Tac-Toe</h1>
+      <div id="check-sign-in"></div>
+      <div id="check-sign-up"></div>
+      <div id="check-change-password"></div>
+      <div id="check-sign-out"></div>
 
           <div class="row">
               <form class="hidesignin" id="sign-up">
@@ -22,26 +26,22 @@
                 <input type="password" name="credentials[password]" placeholder="password">
                 <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
                 <button type="submit">Create Account</button>
-                <div id="check-sign-up"></div>
               </form>
               <form class="hidesignin" id="sign-in">
               <h2> sign in</h2>
               <input type="email" name="credentials[email]" placeholder="email">
               <input type="password" name="credentials[password]" placeholder="password">
               <button type="submit">sign in</button>
-              <div id="check-sign-in"></div>
             </form>
               <form class="hidesignout" id="change-password">
                 <h2>change pw</h2>
                 <input type="password" name="passwords[old]" placeholder="old password">
                 <input type="password" name="passwords[new]" placeholder="new password">
                 <button type="submit">change password</button>
-                <div id="check-change-password"></div>
               </form>
               <form class="hidesignout" id="sign-out">
                 <h2>log out</h2>
                 <button type="submit">sign out</button>
-                <div id="check-sign-out"></div>
               </form>
           </div>
         </header>
