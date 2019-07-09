@@ -44,35 +44,63 @@ const checkgame = () => {
     $('#checkforgame').css('font-size', '50px')
   }
 }
+let whosMove = 1
+
+
 
 let xScore = 0
 let oScore = 0
 let totalxmoves = 0
 let totalomoves = 0
 let gameOver = true
-let whosMove = 1
 let playsMade = 0
 const sendSelection = event => {
-  if (gameOver === false) {
-    const mytext = $(event.target).text()
-    if (whosMove === 1 && mytext !== 'o') {
-      $(event.target).text('x')
-      $(event.target).css('font-size', '80px')
-      $(event.target).css('text-align', 'center')
-      playsMade = playsMade + 1
-      whosMove = whosMove - 1
-      numberOfPlays = numberOfPlays + 1
-      totalxmoves = totalxmoves + 1
-    } else if (whosMove === 0 && mytext !== 'x') {
-      $(event.target).text('o')
-      $(event.target).css('font-size', '80px')
-      $(event.target).css('text-align', 'center')
-      whosMove = whosMove + 1
-      numberOfPlays = numberOfPlays + 1
-      playsMade = playsMade + 1
-      totalomoves = totalomoves + 1
+  if (gameOver === true) {
+    $('#already-selected').show()
+    $('#already-selected').css('text-align', 'center')
+    $('#already-selected').css('font-size', '35px')
+    $('#already-selected').text('game is over, start new game to play')
+    setTimeout(function () {
+      $('#already-selected').text('')
+    }, 5000)
+  } else {
+    if ($(event.target).text() === 'x' && whosMove === 0) {
+      $('#already-selected').css('text-align', 'center')
+      $('#already-selected').css('font-size', '35px')
+      $('#already-selected').show()
+      $('#already-selected').text('spot already chosen by x')
+      setTimeout(function () {
+        $('#already-selected').text('')
+      }, 2000)
+    } else if ($(event.target).text() === 'o' && whosMove === 1) {
+      $('#already-selected').css('text-align', 'center')
+      $('#already-selected').css('font-size', '35px')
+      $('#already-selected').show()
+      $('#already-selected').text('spot already chosen by o')
+      setTimeout(function () {
+        $('#already-selected').text('')
+      }, 2000)
+    } else if (gameOver === false) {
+      const mytext = $(event.target).text()
+      if (whosMove === 1 && mytext !== 'o') {
+        $(event.target).text('x')
+        $(event.target).css('font-size', '80px')
+        $(event.target).css('text-align', 'center')
+        playsMade = playsMade + 1
+        whosMove = whosMove - 1
+        numberOfPlays = numberOfPlays + 1
+        totalxmoves = totalxmoves + 1
+      } else if (whosMove === 0 && mytext !== 'x') {
+        $(event.target).text('o')
+        $(event.target).css('font-size', '80px')
+        $(event.target).css('text-align', 'center')
+        whosMove = whosMove + 1
+        numberOfPlays = numberOfPlays + 1
+        playsMade = playsMade + 1
+        totalomoves = totalomoves + 1
+      }
+      checkgame()
     }
-    checkgame()
   }
 }
 const onShowStats = () => {
@@ -127,48 +155,38 @@ const addScore = () => {
   }
 }
 
+const checkingstats = () => {
+  addScore()
+  gameOver = true
+  gameIsOver()
+}
+
 const checkForWin = () => {
   if (gameOver === false) {
     if (gbstatus[0] !== '' && gbstatus[1] !== '' && gbstatus[2] !== '' && gbstatus[0] === gbstatus[1] && gbstatus[1] === gbstatus[2]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[2] !== '' && gbstatus[4] !== '' && gbstatus[6] !== '' && gbstatus[2] === gbstatus[4] && gbstatus[4] === gbstatus[6]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[3] !== '' && gbstatus[4] !== '' && gbstatus[5] !== '' && gbstatus[3] === gbstatus[4] && gbstatus[4] === gbstatus[5]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[6] !== '' && gbstatus[7] !== '' && gbstatus[8] !== '' && gbstatus[6] === gbstatus[7] && gbstatus[7] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[0] !== '' && gbstatus[3] !== '' && gbstatus[6] !== '' && gbstatus[0] === gbstatus[3] && gbstatus[3] === gbstatus[6]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[1] !== '' && gbstatus[4] !== '' && gbstatus[7] !== '' && gbstatus[1] === gbstatus[4] && gbstatus[4] === gbstatus[7]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[2] !== '' && gbstatus[5] !== '' && gbstatus[8] !== '' && gbstatus[2] === gbstatus[5] && gbstatus[5] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (gbstatus[0] !== '' && gbstatus[4] !== '' && gbstatus[8] !== '' && gbstatus[0] === gbstatus[4] && gbstatus[4] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
-      addScore()
-      gameOver = true
-      gameIsOver()
+      checkingstats()
     } else if (playsMade > 8) {
       $('#updates').text('game is a tie')
       gameOver = true
@@ -217,9 +235,7 @@ const onUpdateBoard = event => {
   const index = event.target.id
   const value = $(event.target).text()
   api.updateBoard(index, value)
-    .then((response) => {
-      console.log(response)
-    })
+    .then()
     .catch()
 }
 
@@ -241,4 +257,5 @@ module.exports = {
   onShowGameBoard,
   onUpdateBoard,
   onShowStats
+  // checkforduplicate
 }

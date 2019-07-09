@@ -25,6 +25,7 @@ const signInSuccess = (data) => {
   $('.hidesignout').show()
   $('.hidesignin').hide()
   store.user = data.user
+  $('#initiate-game').show()
 }
 const signInFailure = () => {
   $('form').trigger('reset')
@@ -68,7 +69,6 @@ const signOutFailure = () => {
 
 const newGameSuccess = (response) => {
   store.game = response.game
-  console.log(store.game)
   $('#made-game').text('new game made')
   setTimeout(function () {
     $('#made-game').text('')
