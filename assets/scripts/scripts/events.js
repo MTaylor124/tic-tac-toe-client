@@ -115,6 +115,7 @@ const cleargameboard = () => {
   $('.clicker').text('')
   gbstatus = ['', '', '', '', '', '', '', '', '']
   playsMade = 0
+  $('#updates').text('')
 }
 
 const onSignOut = event => {
