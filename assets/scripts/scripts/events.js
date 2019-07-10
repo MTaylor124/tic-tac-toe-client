@@ -38,67 +38,55 @@ const onChangePassword = event => {
 }
 
 let numberOfPlays = 0
+
+
+let whosMove = 'x'
+let xScore = 0
+let oScore = 0
+
+let gameOver = false
+
+const gameovernotification = () => {
+  $('#already-selected').show()
+  $('#already-selected').css('text-align', 'center')
+  $('#already-selected').css('font-size', '35px')
+  $('#already-selected').text('game is over, start new game to play')
+  setTimeout(function () {
+    $('#already-selected').text('')
+  }, 5000)
+}
+
 const checkgame = () => {
-  if (numberOfPlays === 9) {
-    $('#checkforgame').text('game over')
-    $('#checkforgame').css('font-size', '50px')
+  if (numberOfPlays < 9) {
+    numberOfPlays = numberOfPlays + 1
+  } else if (numberOfPlays > 8) {
+    gameovernotification()
   }
 }
 
-let whosMove = 1
-let xScore = 0
-let oScore = 0
-let totalxmoves = 0
-let totalomoves = 0
-let gameOver = true
-let playsMade = 0
 const sendSelection = event => {
   if (gameOver === true) {
-    $('#already-selected').show()
+    gameovernotification()
+  } else if (whosMove === 'x' && $(event.target).text() === '') {
+    $(event.target).text('x')
+    $(event.target).css('font-size', '80px')
+    $(event.target).css('text-align', 'center')
+    checkgame()
+    whosMove = 'o'
+  } else if (whosMove === 'o' && $(event.target).text() === '') {
+    $(event.target).text('o')
+    $(event.target).css('font-size', '80px')
+    $(event.target).css('text-align', 'center')
+    checkgame()
+    whosMove = 'x'
+  } else if ($(event.target).text() !== '') {
     $('#already-selected').css('text-align', 'center')
     $('#already-selected').css('font-size', '35px')
-    $('#already-selected').text('game is over, start new game to play')
+    $('#already-selected').show()
+    $('#already-selected').text('spot already chosen')
     setTimeout(function () {
       $('#already-selected').text('')
-    }, 5000)
-  } else {
-    if ($(event.target).text() === 'x' && whosMove === 0) {
-      $('#already-selected').css('text-align', 'center')
-      $('#already-selected').css('font-size', '35px')
-      $('#already-selected').show()
-      $('#already-selected').text('spot already chosen by x')
-      setTimeout(function () {
-        $('#already-selected').text('')
-      }, 2000)
-    } else if ($(event.target).text() === 'o' && whosMove === 1) {
-      $('#already-selected').css('text-align', 'center')
-      $('#already-selected').css('font-size', '35px')
-      $('#already-selected').show()
-      $('#already-selected').text('spot already chosen by o')
-      setTimeout(function () {
-        $('#already-selected').text('')
-      }, 2000)
-    } else if (gameOver === false) {
-      const mytext = $(event.target).text()
-      if (whosMove === 1 && mytext !== 'o') {
-        $(event.target).text('x')
-        $(event.target).css('font-size', '80px')
-        $(event.target).css('text-align', 'center')
-        playsMade = playsMade + 1
-        whosMove = whosMove - 1
-        numberOfPlays = numberOfPlays + 1
-        totalxmoves = totalxmoves + 1
-      } else if (whosMove === 0 && mytext !== 'x') {
-        $(event.target).text('o')
-        $(event.target).css('font-size', '80px')
-        $(event.target).css('text-align', 'center')
-        whosMove = whosMove + 1
-        numberOfPlays = numberOfPlays + 1
-        playsMade = playsMade + 1
-        totalomoves = totalomoves + 1
-      }
-      checkgame()
-    }
+    }, 2000)
   }
 }
 
@@ -114,7 +102,7 @@ let gbstatus = ['', '', '', '', '', '', '', '', '']
 const cleargameboard = () => {
   $('.clicker').text('')
   gbstatus = ['', '', '', '', '', '', '', '', '']
-  playsMade = 0
+  numberOfPlays = 0
   $('#updates').text('')
 }
 
@@ -135,6 +123,7 @@ const onSignOut = event => {
   $('.oside').css('background', 'white')
   $('.xside').css('background', 'white')
 }
+
 const addScore = () => {
   if ($(event.target).text() === 'x') {
     xScore = xScore + 1
@@ -142,7 +131,7 @@ const addScore = () => {
   } else if ($(event.target).text() === 'o') {
     oScore = oScore + 1
     $('#scoreofO').text(oScore)
-  } whosMove = 1
+  } whosMove = 'x'
   if (oScore < xScore) {
     $('.xside').css('background', 'yellow')
     $('.xside').css('padding', '14px')
@@ -189,11 +178,11 @@ const checkForWin = () => {
     } else if (gbstatus[0] !== '' && gbstatus[4] !== '' && gbstatus[8] !== '' && gbstatus[0] === gbstatus[4] && gbstatus[4] === gbstatus[8]) {
       $('#updates').text(($(event.target).text() + ' wins'))
       checkingstats()
-    } else if (playsMade > 8) {
+    } else if (numberOfPlays > 8) {
       $('#updates').text('game is a tie')
       gameOver = true
       gameIsOver()
-      whosMove = 1
+      whosMove = 'x'
     }
   }
 }
@@ -227,7 +216,7 @@ const onCreateBoard = event => {
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
   cleargameboard()
-  whosMove = 1
+  whosMove = 'x'
   gameOver = false
 }
 
