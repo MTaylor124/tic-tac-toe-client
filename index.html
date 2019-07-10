@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>TicTacToe by Matt T</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <header>
+      <h1>Tic-Tac-Toe by Matt.Taylor</h1>
+      <div id="check-sign-in"></div>
+      <div id="check-sign-up"></div>
+      <div id="check-change-password"></div>
+      <div id="check-sign-out"></div>
+
+          <div class="row">
+              <form class="hidesignin" id="sign-up">
+                <h2>sign-up</h2>
+                <input type="email" name="credentials[email]" placeholder="email">
+                <input type="password" name="credentials[password]" placeholder="password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+                <button type="submit">Create Account</button>
+              </form>
+              <form class="hidesignin" id="sign-in">
+              <h2> sign in</h2>
+              <input type="email" name="credentials[email]" placeholder="email">
+              <input type="password" name="credentials[password]" placeholder="password">
+              <button type="submit">sign in</button>
+            </form>
+              <form class="hidesignout" id="change-password">
+                <h2>change pw</h2>
+                <input type="password" name="passwords[old]" placeholder="old password">
+                <input type="password" name="passwords[new]" placeholder="new password">
+                <button type="submit">change password</button>
+              </form>
+              <form class="hidesignout" id="sign-out">
+                <h2>log out</h2>
+                <button type="submit">sign out</button>
+              </form>
+          </div>
+        </header>
+            <br>
+            <button id="initiate-game" type="submit">start game/clear board</button>
+            <div id="made-game"></div>
+            <main id="hideme">
+              <button id="gamestatsbutton">user stats</button>
+              <div id="userstats"></div>
+              <div id="already-selected"></div>
+              <div class="xside">
+              <h4 class="scoreboard">x score:</h4>
+                <h4 id="scoreofX"> 0</h4>
+              </div>
+              <div class="oside">
+              <h4 class="scoreboard">o score:</h4>
+                <h4 id="scoreofO"> 0</h4>
+              </div>
+              <br>
+                <h5 id="updates"></h5>
+                  <table id="setmax">
+                    <tr>
+                      <td id="0" class="checkmark clicker choice"> </td>
+                      <td class="vertical"> </td>
+                      <td id="1" class="checkmark clicker choice"> </td>
+                      <td class="vertical"></td>
+                      <td id="2" class="checkmark clicker choice"> </td>
+                    </tr>
+                    <tr>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                    </tr>
+                    <tr>
+                        <td id="3" class="checkmark clicker choice"> </td>
+                        <td class="vertical"> </td>
+                        <td id="4" class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="5" class="checkmark clicker choice"> </td>
+                    </tr>
+                    <tr>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                        <td class="lazygapfix"></td>
+                        <td class="horizontal"></td>
+                    </tr>
+                    <tr>
+                        <td id="6" class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="7" class="checkmark clicker choice"> </td>
+                        <td class="vertical"></td>
+                        <td id="8" class="checkmark clicker choice"> </td>
+                </table>
+            </main>
+    </body>
+</html>
