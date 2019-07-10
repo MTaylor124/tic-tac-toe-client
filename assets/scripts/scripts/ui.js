@@ -86,7 +86,6 @@ const newGameFailure = () => {
 
 const showgamestats = (games) => {
   const gamesplayed = games.games.filter(game => game.over === true)
-  console.log(gamesplayed)
   let totalgamesplayed = 0
   for (let i = 0; i < gamesplayed.length; i++) {
     totalgamesplayed = totalgamesplayed + 1
