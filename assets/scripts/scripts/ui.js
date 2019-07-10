@@ -56,9 +56,11 @@ const signOutSuccess = () => {
   setTimeout(function () {
     $('#check-sign-out').text('')
   }, 2000)
+  $('#initiate-game').hide()
   $('.hidesignout').hide()
   $('.hidesignin').show()
 }
+
 const signOutFailure = () => {
   $('form').trigger('reset')
   $('#check-sign-out').text('failed to sign out')
@@ -81,6 +83,17 @@ const newGameFailure = () => {
     $('#made-game').text('')
   }, 5000)
 }
+
+const showgamestats = (games) => {
+  const gamesplayed = games.games.filter(game => game.over === true)
+  console.log(gamesplayed)
+  let totalgamesplayed = 0
+  for (let i = 0; i < gamesplayed.length; i++) {
+    totalgamesplayed = totalgamesplayed + 1
+  }
+  $('#userstats').text(`total games played by user: ${totalgamesplayed}`)
+}
+
 module.exports = {
   signInSuccess,
   signInFailure,
@@ -91,5 +104,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   newGameSuccess,
-  newGameFailure
+  newGameFailure,
+  showgamestats
 }

@@ -69,11 +69,23 @@ const updateBoard = (index, value) => {
   })
 }
 
+const showstats = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   createBoard,
-  updateBoard
+  updateBoard,
+  showstats
 }

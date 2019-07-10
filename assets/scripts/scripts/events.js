@@ -44,10 +44,8 @@ const checkgame = () => {
     $('#checkforgame').css('font-size', '50px')
   }
 }
+
 let whosMove = 1
-
-
-
 let xScore = 0
 let oScore = 0
 let totalxmoves = 0
@@ -103,10 +101,14 @@ const sendSelection = event => {
     }
   }
 }
-const onShowStats = () => {
-  $('#gamestatsx').text(`player x total moves: ${totalxmoves}`)
-  $('#gamestatso').text(`player o total moves: ${totalomoves}`)
+
+const onShowStats = event => {
+  event.preventDefault()
+  api.showstats()
+    .then(ui.showgamestats)
+    .catch()
 }
+
 let gbstatus = ['', '', '', '', '', '', '', '', '']
 
 const cleargameboard = () => {
@@ -123,8 +125,7 @@ const onSignOut = event => {
   xScore = 0
   oScore = 0
   api.signOut()
-    .then(ui.signOutSuccess
-    )
+    .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
   cleargameboard()
   $('#hideme').hide()
@@ -257,5 +258,4 @@ module.exports = {
   onShowGameBoard,
   onUpdateBoard,
   onShowStats
-  // checkforduplicate
 }
